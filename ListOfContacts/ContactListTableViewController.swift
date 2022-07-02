@@ -60,4 +60,22 @@ class ContactListTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        print(contacts[indexPath.row])
+
+        guard let detailUserVC = storyboard?.instantiateViewController(withIdentifier: "DetailUserViewController") as? DetailUserViewController else { return }
+        
+        detailUserVC.nameUser = contacts[indexPath.row].name
+        detailUserVC.numberOfPhoneUser = contacts[indexPath.row].numPhone
+        
+        
+        present(detailUserVC, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
+    }
 }
