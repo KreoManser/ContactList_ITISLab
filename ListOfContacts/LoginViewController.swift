@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         guard let contactListVC = storyboard?.instantiateViewController(withIdentifier: "ContactListTableViewController") as? ContactListTableViewController else { return }
         
         guard Int(numPhone) != nil else {
-            wrongVC.error = "В номере не может быть букв!"
+            wrongVC.error = "Неверный формат!"
             present(wrongVC, animated: true)
             return
         }
