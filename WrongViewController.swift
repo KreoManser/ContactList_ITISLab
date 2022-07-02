@@ -10,11 +10,18 @@ import UIKit
 class WrongViewController: UIViewController {
 
     @IBOutlet weak var closeViewButton: UIButton!
+    @IBOutlet weak var wrongLabel: UILabel!
+    
+    var error: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         closeViewButton.configuration = setupConfiguration(with: "Close")
+        
+        if error != nil {
+            wrongLabel.text = error
+        }
     }
     
     @IBAction func closeViewButtonDidTap(_ sender: Any) {
@@ -26,7 +33,7 @@ class WrongViewController: UIViewController {
             
         buttonConfiguration.cornerStyle = .large
         buttonConfiguration.buttonSize = .large
-        buttonConfiguration.baseBackgroundColor = .systemIndigo
+        buttonConfiguration.baseBackgroundColor = .systemRed
         buttonConfiguration.attributedTitle?.font = UIFont.systemFont(ofSize: 36)
         buttonConfiguration.title = title
         
